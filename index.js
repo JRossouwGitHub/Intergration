@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 const xero = require('./routes/api/xero')
-const config = require('./config/default')
 
 app.use('/api/xero', xero)
 
