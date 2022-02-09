@@ -16,7 +16,8 @@ app.get('/login', (req, res) => {
 
 //Redirect after connecting to XERO and getting data
 app.get('/redirect', (req, res) => {
-    res.send('Worked!');
+    console.log(req)
+    res.send('Success! You have been logged in for 30min.');
 });
 
 app.listen(port, () => {
