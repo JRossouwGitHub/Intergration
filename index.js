@@ -10,12 +10,16 @@ app.get('/', (req, res) => {
     res.send('Intergration software running!')
 })
 
-app.get('/login', (req, res) => {
-    res.redirect(`https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${config.xeroClientID}&redirect_uri=https://infusionxero.herokuapp.com/redirect&scope=openid profile email accounting.transactions&state=1`)
-})
-
 //Redirect after connecting to XERO and getting data
 app.get('/redirect', (req, res) => {
+    if(req.params.code){
+        const body = {
+            grant_type: 'authorization_code',
+            code: req.params.code,
+            redirect_uri: 'https://infusionxero.herokuapp.com/redirect'
+        }
+        res.redirect(`/api/xero/token?body=${body}`)
+    }
     console.log(req)
     res.send('Success! You have been logged in for 30min.');
 });
