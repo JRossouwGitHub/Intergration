@@ -4,7 +4,8 @@
   "description": "Intergration software between Infusion and XERO",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "author": "Jacques Rossouw | PalmTop",
   "license": "ISC",
