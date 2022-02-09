@@ -1,0 +1,15 @@
+{
+  "name": "intergration",
+  "version": "0.0.1",
+  "description": "Intergration software between Infusion and XERO",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "Jacques Rossouw | PalmTop",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
