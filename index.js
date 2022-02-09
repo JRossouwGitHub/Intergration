@@ -11,16 +11,17 @@ app.get('/', (req, res) => {
 
 //Redirect after connecting to XERO and getting data
 app.get('/redirect', (req, res) => {
-    if(req.params.code){
+    try{
         const body = {
             grant_type: 'authorization_code',
             code: req.params.code,
             redirect_uri: 'https://infusionxero.herokuapp.com/redirect'
         }
         res.redirect(`/api/xero/token?body=${body}`)
+    } catch(e){
+        console.log(e)
+        res.send('Success! You have been logged in for 30min.');
     }
-    console.log(req)
-    res.send('Success! You have been logged in for 30min.');
 });
 
 app.listen(port, () => {
