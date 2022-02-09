@@ -8,11 +8,11 @@ Router.get('/', (req, res) => {
     return res.status(400).send({msg: 'Root api'});
 })
 
-app.get('/login', (req, res) => {
+Router.get('/login', (req, res) => {
     res.redirect(`https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${config.xeroClientID}&redirect_uri=https://infusionxero.herokuapp.com/redirect&scope=openid profile email accounting.transactions&state=1`)
 })
 
-app.get('/token', (req, res) => {
+Router.get('/token', (req, res) => {
     const data = req.params.body
     var options = {
         uri: 'https://identity.xero.com/connect/token',
