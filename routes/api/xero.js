@@ -13,13 +13,12 @@ Router.get('/login', (req, res) => {
 })
 
 Router.get('/token', (req, res) => {
-    const data = req.params.body
     var options = {
         uri: 'https://identity.xero.com/connect/token',
         body: {
-            'grant_type': data.grant_type,
-            'code': data.code,
-            'redirect_uri': data.redirect_uri
+            'grant_type': req.query.grant_type,
+            'code': req.query.code,
+            'redirect_uri': req.query.redirect_uri
         },
         method: 'POST',
         headers: {
