@@ -13,6 +13,7 @@ Router.get('/login', (req, res) => {
 })
 
 Router.get('/token', (req, res) => {
+    const base64data = Buffer.from(config.xeroClientID + ":" + config.xeroClientSecret).toString('base64')
     var options = {
         uri: 'https://identity.xero.com/connect/token',
         body: {
@@ -22,7 +23,7 @@ Router.get('/token', (req, res) => {
         },
         method: 'POST',
         headers: {
-            'authorization': "Basic " + base64encode(config.xeroClientID + ":" + config.xeroClientSecret),
+            'authorization': "Basic " + base64data,
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     }
