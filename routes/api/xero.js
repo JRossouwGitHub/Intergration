@@ -21,17 +21,17 @@ Router.get('/token', (req, res) => {
     }
     console.log(data)
     var options = {
-        uri: 'https://identity.xero.com/connect/token',
+        headers: {
+            'authorization': "Basic " + base64data,
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        method: 'POST',
         body: {
             grant_type: data.authorization_code,
             code: data.code,
             redirect_uri: data.redirect_uri
         },
-        method: 'POST',
-        headers: {
-            'authorization': "Basic " + base64data.toString(),
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+        uri: 'https://identity.xero.com/connect/token'
     }
     request(options, function (error, response) {
         if(!error && response.statusCode == 200){
