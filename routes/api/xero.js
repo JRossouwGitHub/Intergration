@@ -14,7 +14,7 @@ Router.get('/', (req, res) => {
 })
 
 Router.get('/login', (req, res) => {
-    res.redirect(`https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${config.xeroClientID}&redirect_uri=https://infusionxero.herokuapp.com/redirect&scope=openid profile email accounting.transactions&state=1`)
+    res.redirect(`https://login.xero.com/identity/connect/authorize?response_type=code&client_id=${config.xeroClientID}&redirect_uri=https://infusionxero.herokuapp.com/redirect&scope=openid profile email accounting.transactions accounting.settings offline_access&state=1`)
 })
 
 Router.get('/token', (req, res) => {
