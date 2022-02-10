@@ -27,11 +27,12 @@ Router.get('/token', (req, res) => {
         },
         method: 'POST',
         body: {
-            grant_type: data.authorization_code,
-            code: data.code,
-            redirect_uri: data.redirect_uri
+            'grant_type': data.authorization_code,
+            'code': data.code,
+            'redirect_uri': data.redirect_uri
         },
-        uri: 'https://identity.xero.com/connect/token'
+        uri: 'https://identity.xero.com/connect/token',
+        json: true
     }
     request(options, function (error, response) {
         if(!error){
