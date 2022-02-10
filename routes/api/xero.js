@@ -14,8 +14,14 @@ Router.get('/login', (req, res) => {
 
 Router.get('/token', (req, res) => {
     const base64data = Buffer.from(config.xeroClientID + ":" + config.xeroClientSecret).toString('base64')
+    const data = {
+        authorization_code: req.query.authorization_code,
+        code: req.query.code,
+        redirect_uri: req.query.redirect_uri
+    }
+    console.log(data)
     var options = {
-        uri: `https://identity.xero.com/connect/token?grant_type=authorization_code&code=${req.query.code}&redirect_uri=${req.query.redirect_uri}`,
+        uri: `https://identity.xero.com/connect/token?grant_type=${data.authorization_code}&code=${data.code}&redirect_uri=${data.redirect_uri}`,
         body: '',
         method: 'POST',
         headers: {
@@ -25,10 +31,8 @@ Router.get('/token', (req, res) => {
     }
     request(options, function (error, response) {
         if(!error && response.statusCode == 200){
-            console.log(response.body)
             res.send('Getting Token')
         } else {
-            console.log(req.query.grant_type)
             res.send({err: error})
         }
     });
