@@ -28,7 +28,7 @@ Router.get('/token', (req, res) => {
             console.log(response.body)
             res.send('Getting Token')
         } else {
-            console.log(error, response.body)
+            console.log(req.query.grant_type)
             res.send({err: error})
         }
     });
