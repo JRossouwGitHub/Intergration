@@ -26,18 +26,18 @@ Router.get('/token', (req, res) => {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         method: 'POST',
-        body: {
-            'grant_type': data.authorization_code,
-            'code': data.code,
-            'redirect_uri': data.redirect_uri
-        },
         uri: 'https://identity.xero.com/connect/token'
     }
-    request(options, function (error, response) {
+    const body = {
+        grant_type: data.authorization_code,
+        code: data.code,
+        redirect_uri: data.redirect_uri
+    }
+    request(options, function (error, response, body) {
         if(!error){
             res.send('Getting Token')
         } else {
-            console.log(error)
+            console.log(error, body)
             res.send({err: error})
         }
     });
