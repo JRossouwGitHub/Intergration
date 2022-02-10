@@ -24,8 +24,7 @@ app.get('/redirect', (req, res) => {
             res.send('Error! There was an issue authenticating your login.');
         }
     } else {
-        console.log(req)
-        res.send('Success! You have been logged in for 30min.')
+        res.send('Error! The login attempt did not return a login code.')
     }
 });
 

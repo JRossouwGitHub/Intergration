@@ -3,6 +3,11 @@ const Router = express.Router()
 Router.use(express.json())
 const request = require('request');
 const config = require('../../config/default')
+let access_token
+let id_token
+let expires_in
+let token_type
+let refresh_token
 
 Router.get('/', (req, res) => {
     return res.status(400).send({msg: 'Root api'});
@@ -29,11 +34,12 @@ Router.get('/token', (req, res) => {
         uri: 'https://identity.xero.com/connect/token'
     }
     request(options, function (error, response) {
-        if(!error){
-            res.send('Getting Token')
+        if(!error && response.statusCode == 200){
+            console.log(response)
+            res.json({status: 1, msg: 'Success', login: true})
         } else {
             console.log(error)
-            res.send({err: error})
+            res.json({status: 0, msg: 'Fail', login: false, err: error})
         }
     });
 })
