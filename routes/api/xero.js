@@ -40,6 +40,11 @@ Router.get('/token', (req, res) => {
     //         res.send({err: error})
     //     }
     // });
+    let _body = JSON.stringify({
+        'grant_type': req.query.grant_type,
+        'code': req.query.code,
+        'redirect_uri': req.query.redirect_uri
+    })
     request({
         url : 'https://identity.xero.com/connect/token',
         method :"POST",
@@ -47,11 +52,7 @@ Router.get('/token', (req, res) => {
             'authorization': "Basic " + base64data,
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: {
-            'grant_type': req.query.grant_type,
-            'code': req.query.code,
-            'redirect_uri': req.query.redirect_uri
-        },
+        body: _body,
         json: true
       },
       function(){
