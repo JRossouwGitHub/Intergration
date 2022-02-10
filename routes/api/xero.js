@@ -14,12 +14,12 @@ Router.get('/login', (req, res) => {
 
 Router.get('/token', (req, res) => {
     const base64data = Buffer.from(`${config.xeroClientID} : ${config.xeroClientSecret}`).toString('base64')
+    console.log(base64data)
     const data = {
         authorization_code: req.query.grant_type,
         code: req.query.code,
         redirect_uri: req.query.redirect_uri
     }
-    console.log(data)
     var options = {
         headers: {
             'authorization': "Basic " + base64data,
