@@ -39,7 +39,7 @@ Router.get('/token', (req, res) => {
             res.json({status: 1, msg: 'Success', login: true})
         } else {
             console.log(error)
-            res.json({status: 0, msg: 'Fail', login: false, err: error})
+            res.json({status: 0, msg: 'Fail', login: false})
         }
     });
 })
