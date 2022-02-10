@@ -31,13 +31,13 @@ Router.get('/token', (req, res) => {
             code: data.code,
             redirect_uri: data.redirect_uri
         },
-        uri: 'https://identity.xero.com/connect/token',
-        json: true
+        uri: 'https://identity.xero.com/connect/token'
     }
     request(options, function (error, response) {
         if(!error){
             res.send('Getting Token')
         } else {
+            console.log(error)
             res.send({err: error})
         }
     });
