@@ -13,7 +13,7 @@ Router.get('/login', (req, res) => {
 })
 
 Router.get('/token', (req, res) => {
-    const base64data = Buffer.from(`${config.xeroClientID} : ${config.xeroClientSecret}`).toString('base64')
+    const base64data = JSON.stringify(JSON.parse(Buffer.from(`${config.xeroClientID} : ${config.xeroClientSecret}`).toString('base64')))
     const data = {
         authorization_code: req.query.grant_type,
         code: req.query.code,
