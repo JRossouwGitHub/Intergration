@@ -29,7 +29,7 @@ Router.get('/token', (req, res) => {
         },
         method: 'POST',
         headers: {
-            'authorization': "Basic " + base64data,
+            'authorization': "Basic " + base64data.toString(),
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     }
