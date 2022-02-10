@@ -21,8 +21,12 @@ Router.get('/token', (req, res) => {
     }
     console.log(data)
     var options = {
-        uri: `https://identity.xero.com/connect/token?grant_type=${data.authorization_code}&code=${data.code}&redirect_uri=${data.redirect_uri}`,
-        body: '',
+        uri: 'https://identity.xero.com/connect/token',
+        body: {
+            grant_type: data.authorization_code,
+            code: data.code,
+            redirect_uri: data.redirect_uri
+        },
         method: 'POST',
         headers: {
             'authorization': "Basic " + base64data,
