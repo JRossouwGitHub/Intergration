@@ -13,11 +13,11 @@ app.get('/', (req, res) => {
 app.get('/redirect', (req, res) => {
     try{
         const body = {
-            grant_type: 'refresh_token',
+            grant_type: 'authorization_code',
             code: req.query.code,
             redirect_uri: 'https://infusionxero.herokuapp.com/redirect'
         }
-        res.redirect(`/api/xero/token?grant_type=authorization_code&code=${body.code}&redirect_uri=${body.redirect_uri}`)
+        res.redirect(`/api/xero/token?grant_type=${grant_type}&code=${body.code}&redirect_uri=${body.redirect_uri}`)
     } catch(e){
         console.log(e)
         res.send('Success! You have been logged in for 30min.');
