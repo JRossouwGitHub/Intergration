@@ -15,11 +15,11 @@ app.get('/redirect', (req, res) => {
     if(req.query.code){
         try{
             const body = {
-                grant_type: 'authorization_code',
+                grant_type: 'refresh_token',
                 code: req.query.code,
                 redirect_uri: 'https://infusionxero.herokuapp.com/redirect'
             }
-            res.redirect(`/api/xero/token?grant_type=authorization_code&code=${body.code}&redirect_uri=${body.redirect_uri}`)
+            res.redirect(`/api/xero/token?grant_type=${body.grant_type}&code=${body.code}&redirect_uri=${body.redirect_uri}`)
         } catch(e){
             console.log(e)
             res.send('Error! There was an issue authenticating your login.');
