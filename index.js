@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
 
 //Redirect after connecting to XERO and getting data
 app.get('/redirect', (req, res) => {
+    console.log(res)
     if(req.query.code){
         try{
             const body = {
