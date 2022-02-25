@@ -15,7 +15,7 @@ app.get('/redirect', (req, res) => {
     if(req.query.code){
         try{
             const body = {
-                grant_type: 'refresh_token',
+                grant_type: 'authorization_code',
                 code: req.query.code,
                 redirect_uri: 'https://infusionxero.herokuapp.com/redirect'
             }
