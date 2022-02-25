@@ -34,7 +34,7 @@ Router.get('/token', (req, res) => {
         uri: 'https://identity.xero.com/connect/token'
     }
     request(options, function (error, response) {
-        if(!error && response.statusCode == 200){
+        if(!error){
             console.log(response)
             res.json({status: 1, msg: 'Success', login: true})
         } else {
